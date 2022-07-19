@@ -1,8 +1,13 @@
 ## Ginvel3-Admin介绍：
 > ginvel3后台管理系统，基于vue3+vite+axios+es6，适合后端程序员。
 >
-> 仓库：https://github.com/fyonecon/ginvel3_admin
+> 仓库：
 > 
+> https://github.com/fyonecon/ginvel3_admin
+> 
+> 示例MySQL数据：
+> 
+> https://cdnaliyun.oss-accelerate-overseas.aliyuncs.com/ginvel_mysql/ginvel_test-20220719-2.sql
 
 ## Ginvel3框架仓库：
 >https://github.com/fyonecon/ginvel3 （推荐🔥）
