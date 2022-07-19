@@ -12,8 +12,10 @@ const config = {
     "cache": Math.floor((new Date())/1000000) * 1000 * 3 / 2, // 页面缓存时间1000s
     "app": { //
         "app_class": "vue-example",
-        "app_name": "vue示例",
+        "app_name": "Ginvel3后台管理系统",
         "app_version": "v1.0.0",
+        "app_support": "技术支持fyonecon@gmail.com",
+        "app_copyright": "Copyright © fyonecon·Apache2.0",
     },
     "title": "由Vue框架渲染",
 };

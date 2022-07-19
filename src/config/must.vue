@@ -95,46 +95,48 @@
                     // POST请求
                     const post_api = that.config.api_url + "admin/check_login_token"; // 接口
                     const map = new Map([ // 要提交数据
-                      ["app_class", that.config.app.app_class],
-                      ["url", encodeURIComponent(window.location.href).substring(0, 2000)], // 取当前url即可
-                      ["login_id", login_id],
-                      ["login_name", login_name],
-                      ["login_token", login_token],
+                        ["app_class", that.config.app.app_class],
+                        ["url", encodeURIComponent(window.location.href).substring(0, 2000)], // 取当前url即可
+                        ["login_id", login_id],
+                        ["login_name", login_name],
+                        ["login_token", login_token],
                     ]);
                     let body = "";
                     for (let [k, v] of map) { body += k+"="+v+"&"; } // 拼装数据，限制2MB
                     fetch(post_api, {
-                      method: "post",
-                      mode: "cors", // same-origin/no-cors/cors
-                      cache: "no-cache",
-                      headers: {
-                        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-                      },
-                      body: body,
+                        method: "post",
+                        mode: "cors", // same-origin/no-cors/cors
+                        cache: "no-cache",
+                        headers: {
+                          "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+                        },
+                        body: body,
                     }).then(function(response){
-                      if (response.status === 200){return response;}
+                        if (response.status === 200){return response;}
                     }).then(function(data) {
-                      return data.text();
+                        return data.text();
                     }).then(function(text){ // 返回接口数据
-                      let res = that.common.data_to_json(text);
-                      that.common.log(res);
-                      that.loading = false;
-                      if (res.state === 0){
-                        that.$message(res.msg);
-                        that.del_login();
-                        that.must_login();
-                      }else if (res.state === 1){
-                        that.common.log(res.msg);
-                        that.page_init();
-                      }else{
-                        that.$message(res.msg);
-                        that.del_login();
-                        that.must_login();
-                      }
+                        let res = that.common.data_to_json(text);
+                        that.common.log(res);
+                        that.loading = false;
+                        if (res.state === 0){
+                            that.$message(res.msg);
+                            that.del_login();
+                            that.must_login();
+                        }else if (res.state === 1){
+                            that.common.log(res.msg);
+                            let login_level = res.content.login_level;
+                            document.getElementsByClassName("nav-admin-info")[0].innerHTML = login_level + "（"+ login_id +"）";
+                            that.page_init();
+                        }else{
+                            that.$message(res.msg);
+                            that.del_login();
+                            that.must_login();
+                        }
                     }).catch(function(error){
-                      let error_info = "Fetch_Error：" + error;
-                      that.$message.error("Fetch_Error：" + error);
-                      that.common.error(error_info);
+                        let error_info = "Fetch_Error：" + error;
+                        that.$message.error("Fetch_Error：" + error);
+                        that.common.error(error_info);
 
                     });
                     // 结束-Fetch

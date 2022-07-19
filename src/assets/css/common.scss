@@ -1,10 +1,9 @@
 
-.body{
+body, html{
 	margin: 0;
 	padding: 0;
 	background-color: #f5f5f5;
-	font-family: "Noto Sans Light";
-	font-size: 16px;
+	font-size: 14px;
 	color: #1c1c1c;
 }
 
@@ -19,7 +18,6 @@
 }
 
 .app-content{
-	width: 100%;
 	clear: both;
 	margin-left: auto;
 	margin-right: auto;
@@ -27,19 +25,30 @@
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 	border-radius: 3px;
 }
-@media only screen and (min-width: 320px) and (max-width: 768px) {
+.top-content{
+	font-size: 14px;
+}
+.page-content{
+	min-height: 400px;
+	font-size: 14px;
+}
+.foot-content{
+	font-size: 14px;
+}
+
+@media only screen and (min-width: 1000px) {
 	.app-content{
-		width: 100%;
+		width: 100%
 	}
 }
-@media only screen and (min-width: 769px) {
+@media only screen and (min-width: 301px) and (max-width: 999px) {
 	.app-content{
-		width: 768px;
+		width: 1000px;
 	}
 }
-@media only screen and (max-width: 319px) {
+@media only screen and (max-width: 300px) {
 	.app-content{
-		width: 320px;
+		width: 300px;
 	}
 }
 
