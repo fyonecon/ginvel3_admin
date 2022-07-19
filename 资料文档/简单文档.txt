@@ -1,0 +1,68 @@
+
+### vue3+vite：
+确保开发目录的权限是777，否则vite无法运行：
+chmod -R 777 <项目名称>
+开发环境打包：
+npm run dev
+运行环境打包：
+npm run build
+退出命令行：
+按键Ctrl+C
+
+
+### 构建新vite：
+npm init vite-app <项目名称>
+//切换到项目目录
+cd <项目名称>
+//安装依赖
+npm install
+
+// 更新插件
+npm update
+
+// 更新npm。macOS下：
+sudo npm install --location=global npm
+
+### 安装依赖：
+npm install vue-router@4
+npm install axios --save
+npm install element-plus --save
+npm i wangeditor --save
+npm i swiper
+npm install chart.js --save
+npm install qrcodejs2
+
+
+
+
+
+
+
+
+
+
+================
+
+
+
+
+
+报错：
+⠧ Building production bundle...
+/usr/local/var/www/h5/view-vue3/node_modules/esbuild/esbuild.exe: /usr/local/var/www/h5/view-vue3/node_modules/esbuild/esbuild.exe: cannot execute binary file
+[vite] error while transforming index.cef13da5.js with esbuild:
+Error: The service was stopped
+    at /usr/local/var/www/h5/view-vue3/node_modules/esbuild/lib/main.js:1020:33
+    at /usr/local/var/www/h5/view-vue3/node_modules/esbuild/lib/main.js:542:9
+    at Socket.afterClose (/usr/local/var/www/h5/view-vue3/node_modules/esbuild/lib/main.js:520:7)
+    at Socket.emit (events.js:387:35)
+    at endReadableNT (internal/streams/readable.js:1317:12)
+⠇ Building production bundle...
+
+解决：
+手动运行 node node_modules/esbuild/install.js 来解决esbuild安装问题。
+
+
+
+
+

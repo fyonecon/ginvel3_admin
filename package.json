@@ -1,0 +1,26 @@
+{
+  "name": "view-vue3",
+  "version": "0.0.0",
+  "description": "",
+  "repository": "",
+  "license": "",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "axios": "^0.21.4",
+    "chart.js": "^3.8.0",
+    "element-plus": "^1.0.2-beta.71",
+    "qrcodejs2": "0.0.2",
+    "swiper": "^6.8.4",
+    "vue": "^3.2.37",
+    "vue-qr": "^2.5.0",
+    "vue-router": "^4.0.16",
+    "wangeditor": "^4.7.15"
+  },
+  "devDependencies": {
+    "@vue/compiler-sfc": "^3.2.37",
+    "vite": "^1.0.0-rc.13"
+  }
+}
