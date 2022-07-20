@@ -14,7 +14,7 @@
     // 引入组件
     import top from "/@/components/top.vue";
     import foot from "/@/components/foot.vue";
-    import must from "/@/config/must.vue";
+    import must from "/@/bootstrap/config/must.vue";
 
 
     export default {
@@ -41,8 +41,8 @@
                 let that = this;
                 let page_name = that.$options.name;
                 let page_data = that.$options.mounted;
-                that.page_help.loaded([page_name, page_data]);
-                that.common.log(["start_this_page函数已运行_" + page_name]);
+                that.page_help.loaded(page_name, page_data);
+                that.helper.log(["start_this_page函数已运行_" + page_name]);
 
                 // 其他
 

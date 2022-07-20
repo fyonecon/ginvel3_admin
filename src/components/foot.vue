@@ -1,4 +1,5 @@
 <template>
+    <div class="clear"></div>
     <div class="foot-content">
 <!--        <router-link to="./" class="a-href"  target="_self" title="">首页</router-link>-->
         <div class="foot-title">
@@ -11,6 +12,7 @@
 <!--        </div>-->
 
     </div>
+    <div class="clear"></div>
 </template>
 
 <script>
@@ -30,7 +32,7 @@
         },
         mounted(e) { // 组件初始化完成
             let that = this;
-            that.common.log("foot >>> ");
+            that.helper.log("foot >>> ");
         },
         methods: {
 
@@ -40,6 +42,7 @@
 
 <style scoped>
     .foot-content{
+        margin-top: 50px;
         padding: 0 10px 10px 10px;
     }
     .foot-title{

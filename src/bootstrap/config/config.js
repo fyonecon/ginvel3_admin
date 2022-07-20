@@ -17,8 +17,7 @@ const config = {
         "app_support": "技术支持fyonecon@gmail.com",
         "app_copyright": "Copyright © fyonecon·Apache2.0",
     },
-    "title": "由Vue框架渲染",
+    "title": "Ginvel3后台管理系统",
 };
-
 
 export { config }

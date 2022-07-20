@@ -1,9 +1,11 @@
 // 注册路由，vue3+vite专用
-import {config} from "../config/config";
+import {config} from "../bootstrap/config/config";
 
 import home from '../pages/home/home.vue';
 import login from '../pages/login/login.vue';
 import page_404 from '../pages/404/404.vue';
+
+import admin from '../pages/admin/admin.vue';
 
 import example from '../pages/example/example.vue';
 import example_test from '../pages/example/test/test.vue';
@@ -20,7 +22,7 @@ const routes = [ // 自定义路由名称
     { // 必要
         path: '/404',
         component: page_404,
-        meta: { title: '404，没有对应该路由页面' },
+        meta: { title: '页面404，路由错误' },
     },
     { // 必要
         path: '/login',
@@ -31,6 +33,12 @@ const routes = [ // 自定义路由名称
         path: '/',
         component: home,
         meta: { title: '首页' },
+    },
+
+    { //
+        path: '/admin',
+        component: admin,
+        meta: { title: '管理账户' },
     },
 
     /*示例*/
@@ -102,6 +110,10 @@ const router = createRouter({
 
 // 监控路由
 router.beforeEach((to, from, next) => {
+    // 监听路由变化
+    let now_route = to.fullPath
+    // try {console.log("当前路由："+to.fullPath);}catch (e) {}
+    // 判断路由
     if (to.matched.length === 0) {  // 未匹配到路由
         next('/404');
     } else { // 匹配到路由
@@ -113,7 +125,11 @@ router.beforeEach((to, from, next) => {
             page_title = '（没有配置meta.title名）';
         }
         if (page_title) {
-            document.title = page_title + " - " + config.title;
+            if (now_route === "/404" || now_route === "/login"){
+                document.title = page_title;
+            }else {
+                document.title = page_title + " - " + config.title;
+            }
         }else{
             document.title = config.title;
         }

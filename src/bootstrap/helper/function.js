@@ -1,9 +1,9 @@
 
-import {config} from '../../config/config.js';
+import {config} from '../config/config.js';
 import {hex_md5} from './md5.js';
 
 const map_cache = new Map(); // 设置页面键-值对缓存
-const common = {
+const helper = {
 	"desc": "这是公共js，import {common} 引入即可使用",
 	"test": function (){
 		return config.debug;
@@ -83,11 +83,7 @@ const common = {
 	},
 	"set_data": function (key, value){
 		localStorage.setItem(key,value);
-		if (localStorage.getItem(key)){
-			return true;
-		}else {
-			return false;
-		}
+		return localStorage.getItem(key);
 	},
 	"get_data": function (key, test) {
 		if (test || test === 0){
@@ -102,20 +98,10 @@ const common = {
 		}
 	},
 	"del_data": function (key) {
-		let del = localStorage.removeItem(key);
-		if (del){
-			return true;
-		}else {
-			return false;
-		}
+		return localStorage.removeItem(key);
 	},
 	"clear_data": function () {
-		let clear = localStorage.clear();
-		if (clear){
-			return true;
-		}else {
-			return false;
-		}
+		return localStorage.clear();
 	},
 	"set_cache": function (_key, _value) { // key-value对 存入系统内存，页面关闭即key-value消失
 		let msg = "";
@@ -159,20 +145,15 @@ const common = {
 	},
 	data_to_json: function(text){
 		// 统一格式校验
-		let back = null;
 		let res = null;
 		if (typeof text === "string"){
-			back = text;
 			res = JSON.parse(text);
 		}else if (typeof text === "object"){
-			back = JSON.stringify(text);
 			res = text;
 		}else {
 			console.log("未知类型=" + typeof text);
-			back = text;
 			res = text;
 		}
-
 		return res;
 	},
 
@@ -180,5 +161,5 @@ const common = {
 
 
 export {
-	common,
+	helper,
 }

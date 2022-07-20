@@ -62,19 +62,19 @@
         methods: { // 组件局部函数集合
             start_this_page: function (e){ // 页面所有自定义函数起始
                 let that = this;
-                that.common.log(["start_this_page函数已运行_" + e]);
+                that.helper.log(["start_this_page函数已运行_" + e]);
 
             },
 
             // 开始-上传图片
             handleRemove(file, fileList) { // 直接移除图片
                 let that = this;
-                that.common.log(['直接移除图片', file, fileList]);
+                that.helper.log(['直接移除图片', file, fileList]);
 
             },
             handlePreview(file) { // 预览图片
                 let that = this;
-                that.common.log(['预览图片', file.response]);
+                that.helper.log(['预览图片', file.response]);
                 
             },
             handleExceed(files, fileList) { // 超过限制

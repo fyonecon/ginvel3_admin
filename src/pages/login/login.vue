@@ -1,16 +1,17 @@
 <template>
   <div>
-    <div class="div-login">
-      <input class="input-login input-login_name" type="text" maxlength="20" value="" placeholder="登录名"/>
-      <input class="input-login input-login_pwd" type="password" maxlength="20" value="" placeholder="密码">
-      <div class="login-btn select-none click" @click="admin_login">确定</div>
+    <div class="login-content">
+      <div class="login-div">
+        <div class="login-title select-none">{{login_title}}（请登录）</div>
+        <input class="input-login input-login_name" type="text" maxlength="20" value="" placeholder="登录名"/>
+        <input class="input-login input-login_pwd" type="password" maxlength="20" value="" placeholder="密码">
+        <div class="login-captcha select-none">-</div>
+        <div class="login-btn select-none click" @click="admin_login">确定</div>
+      </div>
     </div>
   </div>
 
-  <foot />
-  <div class="clear"></div>
-
-  <must ref="page_must" data-desc="接口和安全参数验证的必要全局组件"/>
+<!--  <foot />-->
   <div class="clear"></div>
 </template>
 
@@ -18,7 +19,6 @@
 // 引入组件
 import top from "/@/components/top.vue";
 import foot from "/@/components/foot.vue";
-import must from "/@/config/must.vue";
 import axios from "axios";
 
 export default {
@@ -29,31 +29,31 @@ export default {
   data(){
     let that = this;
     return {
-
+      login_title: "",
     };
   },
   components: {
     foot,
-    must
   },
   setup(props, context) { // 系统创建完成
     let that = this;
   },
   mounted(props, context) { // 组件初始化完成
     let that = this;
+    that.login_title = that.config.title;
   },
   methods: { // 组件局部函数集合
     start_this_page: function (e){ // 页面所有自定义函数起始
       let that = this;
       let page_name = that.$options.name;
       let page_data = that.$options.mounted;
-      that.page_help.loaded([page_name, page_data]);
-      that.common.log(["start_this_page函数已运行_" + page_name]);
+      that.page_help.loaded(page_name, page_data);
+      that.helper.log(["start_this_page函数已运行_" + page_name]);
 
       // 清空已登录的信息
-      that.common.set_cookie("login_id", "");
-      that.common.set_cookie("login_name", "");
-      that.common.set_cookie("login_token", "");
+      that.helper.set_cookie("login_id", "");
+      that.helper.set_cookie("login_name", "");
+      that.helper.set_cookie("login_token", "");
 
       // 自动填充input
       document.getElementsByClassName("input-login_name")[0].value = "567";
@@ -70,7 +70,7 @@ export default {
         that.$message("帐号或密码格式不符合");
         return;
       }else {
-        login_pwd = that.common.md5(login_pwd);
+        login_pwd = that.helper.md5(login_pwd);
       }
 
       // POST请求
@@ -98,8 +98,8 @@ export default {
       // }).then(function(data) {
       //     return data.text();
       // }).then(function(text){ // 返回接口数据
-      //     let res = that.common.data_to_json(text);
-      //     that.common.log(res);
+      //     let res = that.helper.data_to_json(text);
+      //     that.helper.log(res);
       //
       //     that.loading = false;
       //
@@ -113,12 +113,12 @@ export default {
       //         let login_name = res.content.login_name;
       //         let login_token = res.content.login_token;
       //         let login_level = res.content.login_level;
-      //         that.common.set_cookie("login_id", login_id, that.common.cookie_timeout);
-      //         that.common.set_cookie("login_name", login_name, that.common.cookie_timeout);
-      //         that.common.set_cookie("login_token", login_token, that.common.cookie_timeout);
+      //         that.helper.set_cookie("login_id", login_id, that.helper.cookie_timeout);
+      //         that.helper.set_cookie("login_name", login_name, that.helper.cookie_timeout);
+      //         that.helper.set_cookie("login_token", login_token, that.helper.cookie_timeout);
       //
       //         // 返回上一级页面
-      //         let back_url = that.common.get_url_param("", "back_url");
+      //         let back_url = that.helper.get_url_param("", "back_url");
       //         setTimeout(function (){
       //             if (back_url.length < 5){
       //               back_url = "./#/";
@@ -140,7 +140,7 @@ export default {
       // }).catch(function(error){
       //     let error_info = "Fetch_Error：" + error;
       //     that.$message.error("Fetch_Error：" + error);
-      //     that.common.error(error_info);
+      //     that.helper.error(error_info);
       //
       // });
       // // 结束-Fetch
@@ -152,7 +152,7 @@ export default {
             app_class: that.config.app.app_class,
             app_name: that.config.app.app_name,
             url: encodeURIComponent(window.location.href).substring(0, 2000),
-            "login_name": login_name,
+            login_name: login_name,
             login_pwd: login_pwd,
             login_captcha: login_captcha,
           },
@@ -173,19 +173,19 @@ export default {
                   let login_name = res.content.login_name;
                   let login_token = res.content.login_token;
                   let login_level = res.content.login_level;
-                  that.common.set_cookie("login_id", login_id, that.common.cookie_timeout);
-                  that.common.set_cookie("login_name", login_name, that.common.cookie_timeout);
-                  that.common.set_cookie("login_token", login_token, that.common.cookie_timeout);
+                  that.helper.set_cookie("login_id", login_id, that.helper.cookie_timeout);
+                  that.helper.set_cookie("login_name", login_name, that.helper.cookie_timeout);
+                  that.helper.set_cookie("login_token", login_token, that.helper.cookie_timeout);
 
                   // 返回上一级页面
-                  let back_url = that.common.get_url_param("", "back_url");
+                  let back_url = that.helper.get_url_param("", "back_url");
                   setTimeout(function (){
                       if (back_url.length < 5){
                           back_url = "./#/";
                       }else {
                           back_url = decodeURIComponent(back_url);
                       }
-                      that.common.log("back_url="+back_url)
+                      that.helper.log("back_url="+back_url)
                       window.location.replace(back_url);
                   }, 1000);
 
@@ -196,7 +196,7 @@ export default {
                   //
               }else{ // "超范围的参数"
                   that.$message.error('超范围的参数');
-                  that.common.log(res.msg);
+                  that.helper.log(res.msg);
               }
 
           })
@@ -219,9 +219,21 @@ export default {
 </script>
 
 <style scoped>
-  .div-login{
-    padding: 20px 20px;
-    width: 400px;
+  .login-content{
+     padding-top: calc(10%);
+  }
+  .login-div{
+    width: 320px;
+    height: 240px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    padding: 20px 10px;
+    border-radius: 5px;
+    margin: auto auto;
+    background-color: white;
+    background-image: url(../../assets/login-bg.svg);
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: 200%;
   }
   .input-login{
     width: 300px;
@@ -242,6 +254,19 @@ export default {
     background: #0d84ff;
     border-radius: 5px;
     padding: 5px 0;
+  }
+  .login-title{
+    font-size: 18px;
+    line-height: 20px;
+    overflow: hidden;
+    letter-spacing: 2px;
+    color: #3a8ee6;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 700;
+  }
+  .login-captcha{
+    height: 40px;
   }
 
 </style>

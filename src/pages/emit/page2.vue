@@ -8,8 +8,8 @@
         mounted(){
             let that = this;
 
-            let data = that.common.get_data('page-data');
-            that.common.log(data);
+            let data = that.helper.get_data('page-data');
+            that.helper.log(data);
 
         },
     }

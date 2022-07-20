@@ -9,7 +9,7 @@
 <script>
 
   export default {
-    name: 'App',
+    name: "App",
     components: {},
     setup(){ // 系统创建完成
       let that = this;

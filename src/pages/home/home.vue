@@ -21,7 +21,7 @@
     // 引入组件
     import top from "/@/components/top.vue";
     import foot from "/@/components/foot.vue";
-    import must from "/@/config/must.vue";
+    import must from "/@/bootstrap/config/must.vue";
 
     export default {
         name: "home",
@@ -43,13 +43,13 @@
         },
         mounted(e) { // 组件初始化完成
             let that = this;
-            that.common.log(e);
+            that.helper.log(e);
 
-            let test_data = that.common.set_cache('test_date', '==test-data==');
-            that.common.log(['home=test_data', test_data]);
+            let test_data = that.helper.set_cache('test_date', '==test-data==');
+            that.helper.log(['home=test_data', test_data]);
 
-            let id = that.common.get_url_param("", "id");
-            that.common.log(id?id:"id=null")
+            let id = that.helper.get_url_param("", "id");
+            that.helper.log(id?id:"id=null")
 
         },
         methods: { // 组件局部函数集合
@@ -57,14 +57,14 @@
                 let that = this;
                 let page_name = that.$options.name;
                 let page_data = that.$options.mounted;
-                that.common.log(["start_this_page函数已运行_" + page_name]);
+                that.helper.log(["start_this_page函数已运行_" + page_name]);
                 //
-                that.page_help.loaded([page_name, page_data]);
+                that.page_help.loaded(page_name, page_data);
 
             },
 
             show_must(data){
-                this.common.log(["show_must= ", data]);
+                this.helper.log(["show_must= ", data]);
                 this.must_data = data;
             },
 

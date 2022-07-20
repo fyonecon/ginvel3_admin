@@ -36,14 +36,14 @@
         methods: { // 组件局部函数集合
             start_this_page: function (e){ // 页面所有自定义函数起始
                 let that = this;
-                that.common.log(["start_this_page函数已运行_" + e]);
+                that.helper.log(["start_this_page函数已运行_" + e]);
 
             },
             test_click (el, num) {
                 let that = this;
 
                 let id = el.target.dataset.id;
-                that.common.log([id, num]);
+                that.helper.log([id, num]);
 
 
             },

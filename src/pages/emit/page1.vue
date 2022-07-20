@@ -25,8 +25,8 @@
         mounted(){
             let that = this;
 
-            let data = that.common.set_data('page-data', 'hello');
-            that.common.log(data);
+            let data = that.helper.set_data('page-data', 'hello');
+            that.helper.log(data);
 
             setTimeout(function () {
                 that.li_state = 'hide';
