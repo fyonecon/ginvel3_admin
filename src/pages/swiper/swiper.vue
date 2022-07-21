@@ -27,7 +27,7 @@
 <script>
     // 引入组件
     import foot from "../../components/foot.vue";
-    import must from "../../config/must.vue";
+    import must from "../../bootstrap/config/must.vue";
 
     import Swiper from 'swiper/swiper-bundle.esm.browser.min.js';
     // import { Swiper } from "swiper"

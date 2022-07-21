@@ -1,5 +1,5 @@
 
-import {config} from '../config/config.js';
+import {config} from '../bootstrap/config/config.js';
 import {hex_md5} from './md5.js';
 
 const map_cache = new Map(); // 设置页面键-值对缓存
