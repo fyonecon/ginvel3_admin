@@ -40,6 +40,6 @@
 <!-- scoped局部 -->
 <!-- @代表项目根路径，css为全局，scss为局部并支持所以css语法 -->
 <style>
-  @import "../../assets/css/common.scss";
+  @import "../../assets/css/app.scss";
 
 </style>
