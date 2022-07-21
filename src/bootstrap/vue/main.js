@@ -3,15 +3,9 @@ import App from "./App.vue"
 const app = createApp(App); // 挂载
 
 import {config} from "../config/config.js";
-<<<<<<< HEAD
-import {global_data} from "../common/global_data.js";
-import {helper} from "../common/helper.js";
-import {page_help} from "../common/page_help.js";
-=======
 import {global_data} from "../../common/global_data.js";
 import {helper} from "../../common/helper.js";
 import {page_help} from "../../common/page_help.js";
->>>>>>> 9684fad492428b09dd1d44cc2500324be3d7e8bf
 
 // 全局变量
 app.config.globalProperties.config = config; // 配置文件、参数

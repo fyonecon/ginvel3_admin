@@ -1,5 +1,4 @@
 import {config} from '../bootstrap/config/config.js';
-import {hex_md5} from './md5.js';
 import {helper} from './helper.js';
 
 let page_help = {
