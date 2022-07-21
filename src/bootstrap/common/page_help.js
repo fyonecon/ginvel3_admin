@@ -1,6 +1,6 @@
 import {config} from '../config/config.js';
 import {hex_md5} from './md5.js';
-import {helper} from './function.js';
+import {helper} from './helper.js';
 
 let page_help = {
 	loaded: function(page_name, page_data, any){ // page页面加载完成后统一初始化此函数

@@ -14,7 +14,7 @@
 <script>
     // 引入组件
     import foot from "../../components/foot.vue";
-    import must from "../../config/must.vue";
+    import must from "../../bootstrap/config/must.vue";
     import E from 'wangeditor'; // 导入插件
 
     export default {
