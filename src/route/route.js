@@ -22,7 +22,7 @@ const routes = [ // 自定义路由名称
     { // 必要
         path: '/404',
         component: page_404,
-        meta: { title: '页面404，路由错误' },
+        meta: { title: '页面404，未知路由' },
     },
     { // 必要
         path: '/login',
@@ -115,7 +115,8 @@ router.beforeEach((to, from, next) => {
     // try {console.log("当前路由："+to.fullPath);}catch (e) {}
     // 判断路由
     if (to.matched.length === 0) {  // 未匹配到路由
-        next('/404');
+        let clear_now_route = encodeURIComponent(now_route).replace('%2F', '');
+        next('/404?error_path='+clear_now_route);
     } else { // 匹配到路由
         // 修改页面title
         let page_title = '';
@@ -125,7 +126,7 @@ router.beforeEach((to, from, next) => {
             page_title = '（没有配置meta.title名）';
         }
         if (page_title) {
-            if (now_route === "/404" || now_route === "/login"){
+            if (now_route === "/404" || now_route === "/login" || now_route.includes("/404?") || now_route.includes("/login?")){
                 document.title = page_title;
             }else {
                 document.title = page_title + " - " + config.title;
